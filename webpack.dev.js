@@ -1,4 +1,7 @@
+const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const buildPath = path.resolve(__dirname, 'dist');
 const pageConfig = require('./page.config.js');
 
 const genPageConfig = (webpackConfig = {}, pageConfig) => {
@@ -19,6 +22,11 @@ const genPageConfig = (webpackConfig = {}, pageConfig) => {
 let webpackConfig = {
   devtool: 'source-map',
   entry: {
+  },
+  output: {
+    filename: '[name].[hash:20].js',
+    path: buildPath,
+    publicPath: '/',
   },
   devServer: {
     host: '0.0.0.0',

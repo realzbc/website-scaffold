@@ -29,7 +29,8 @@ let webpackConfig = {
   },
   output: {
     filename: '[name].[hash:20].js',
-    path: buildPath
+    path: buildPath,
+    publicPath: '/',
   },
   module: {
     rules: [
