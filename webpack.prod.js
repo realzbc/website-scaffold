@@ -17,6 +17,7 @@ const genPageConfig = (webpackConfig = {}, pageConfig) => {
         template: `./src/pages/${page.html}`,
         inject: true,
         chunks: [page.name],
+        favicon: './src/assets/images/favicon.ico',
         filename: `${page.name}.html`
       }));
     });
@@ -55,6 +56,19 @@ let webpackConfig = {
             loader: 'less-loader', // compiles Less to CSS
           },
         ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]'],
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            interpolate: true
+          }
+        }
       },
     ]
   },
