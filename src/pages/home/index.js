@@ -17,6 +17,8 @@ let decreasingColor = "rgba(190, 40, 40, ratio)";
 function handleIntersect(entries, observer) {
   entries.forEach((entry) => {
     console.log(`isIntersecting:${entry.isIntersecting}, intersectionRatio:${entry.intersectionRatio}`);
+    const intersectionObserverEntries = observer.takeRecords();
+    console.log(intersectionObserverEntries);
     if (entry.intersectionRatio > prevRatio) {
       entry.target.style.backgroundColor = increasingColor.replace("ratio", entry.intersectionRatio);
     } else {
